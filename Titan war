@@ -1,0 +1,46 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Titan war", "DarkTheme")
+
+local Tab = Window:NewTab("Transform")
+
+local Section = Tab:NewSection("Transform Aot")
+
+Section:NewLabel("k")
+
+Section:NewButton("Colossal Transform", "Test", function()
+
+game:GetService("ReplicatedStorage").Remotes.Titans.Transform:FireServer("Colossal")
+
+end)
+
+Section:NewButton("Jaw", "Jaw titan", function()
+
+    game:GetService("ReplicatedStorage").Remotes.Titans.Transform:FireServer("Jaw")
+
+end)
+
+Section:NewButton("Female", "test", function()
+
+    game:GetService("ReplicatedStorage").Remotes.Titans.Transform:FireServer("Female")
+
+end)
+
+Section:NewButton("Armored", "test", function()
+
+    game:GetService("ReplicatedStorage").Remotes.Titans.Transform:FireServer("Armored")
+
+end)
+
+Section:NewButton("Wartitan", "War", function()
+
+    game:GetService("ReplicatedStorage").Remotes.Titans.Transform:FireServer("Warhammer")
+
+end)
+
+Section:NewButton("Beast", "Mokey", function()
+
+    game:GetService("ReplicatedStorage").Remotes.Titans.Transform:FireServer("Beast")
+
+end)
+

@@ -76,8 +76,6 @@ Section:NewButton("skill chef time lord", "test", function()
 end)
 Section:NewButton("no cd", "test", function()
 
-    _G.auto = true
-while _G.auto do wait(0.1)
 local v1 = game:GetService("Players").LocalPlayer
 local v_u_2 = game:GetService("UserInputService")
 local v_u_3 = game:GetService("ReplicatedStorage")
@@ -532,5 +530,4 @@ end
 game.ReplicatedStorage.HoldSkill3.OnClientInvoke = v19
 game.ReplicatedStorage.HoldSkill2.OnClientInvoke = v18
 game.ReplicatedStorage.HoldSkill.OnClientInvoke = v17
-end
 end)

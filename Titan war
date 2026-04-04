@@ -531,3 +531,482 @@ game.ReplicatedStorage.HoldSkill3.OnClientInvoke = v19
 game.ReplicatedStorage.HoldSkill2.OnClientInvoke = v18
 game.ReplicatedStorage.HoldSkill.OnClientInvoke = v17
 end)
+Section:NewButton("t", "test", function()
+
+    local v1 = game:GetService("Players").LocalPlayer
+local v_u_2 = game:GetService("UserInputService")
+local v_u_3 = game:GetService("ReplicatedStorage")
+local _ = workspace.CurrentCamera
+require(v1:WaitForChild("PlayerScripts").PlayerModule:WaitForChild("ControlModule"))
+local _ = workspace.CurrentCamera
+repeat
+wait()
+until v1.Character and v1.Character.Parent == workspace.Living
+local v_u_4 = v1:GetMouse()
+local v_u_5 = v1.Character
+local v_u_6 = v1.Character:WaitForChild("CooldownFolder")
+v1.Character:WaitForChild("ValuesFolder")
+local v_u_7 = false
+local v_u_8 = false
+local v_u_9 = false
+v_u_4.TargetFilter = workspace.Living
+function SpinAttack()
+	if v_u_5.ActiveM1.Value == true then
+		return
+	elseif v_u_6.Mode.Value == "Normal" then
+		if v_u_5.SpinAttack_Cooldown.Value == true then
+			return
+		else
+			local v10 = string.split
+			local v11 = v_u_1:FindFirstChild("MasteryFolder"):FindFirstChild("Head Captain Of The CCTV:Mastery").Value
+			local v12 = v10(tostring(v11), ":")
+			local v13 = v12[1]
+			local _ = v12[2]
+			local _ = v12[3]
+			local v14 = tonumber(v13) >= 50 and 4000 or 10000
+			if not v_u_1:FindFirstChild("Data") or (not v_u_1:FindFirstChild("Data"):FindFirstChild("MoneysInShop") or v_u_1:FindFirstChild("Data"):FindFirstChild("MoneysInShop").Value >= v14) then
+				v_u_3.AstroLargeTVSet:FireServer({
+					["Skill"] = "SpinAttack"
+				})
+			end
+		end
+	else
+		if v_u_6.Mode.Value == "God" then
+			if v_u_5.GroundSlam_Cooldown.Value == true then
+				return
+			end
+			v_u_3.AstroLargeTVSet:FireServer({
+				["Skill"] = "GroundSlam"
+			})
+		end
+		return
+	end
+end
+function SwordThrow()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.SwordThrow_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "SwordThrow"
+})
+end
+end
+function ChangeMode()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.ChangeMode_Cooldown.Value == true then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "ChangeMode"
+})
+end
+end
+function JumpSlam()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.JumpSlam_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "JumpSlam"
+})
+end
+end
+function SpotLight()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.SpotLight_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.SpotLight:FireServer()
+end
+end
+function ThrowBack()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.ThrowBack_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "ThrowBack"
+})
+end
+end
+function GroundSlam()
+-- upvalues: (copy) v_u_6, (copy) v_u_5, (copy) v_u_3
+if v_u_6.GroundSlam_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+if v_u_5 and (v_u_5:FindFirstChild("Humanoid") and v_u_5:FindFirstChild("Humanoid").FloorMaterial == Enum.Material.Air) then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "GroundSlam"
+})
+end
+end
+end
+function Teleport()
+-- upvalues: (copy) v_u_6, (copy) v_u_5, (copy) v_u_4, (copy) v_u_3
+if v_u_6.Teleport_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+if (v_u_5.HumanoidRootPart.Position - v_u_4.Hit.Position).Magnitude <= 350 then
+v_u_3.Teleport:FireServer(v_u_4.Hit.Position)
+end
+end
+end
+function GroupTeleport()
+-- upvalues: (copy) v_u_6, (ref) v_u_7, (copy) v_u_3
+if v_u_6.Teleport_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_7 = true
+v_u_3.GroupTeleport:FireServer()
+end
+end
+function SwordCoating()
+-- upvalues: (copy) v_u_5, (copy) v_u_6, (copy) v_u_3
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
+if v_u_6.SwordCoating_Cooldown.Value == false then
+return
+end
+if v_u_6.ActiveM1.Value == true then
+return
+end
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "SwordCoating"
+})
+end
+end
+function EnergyBlast()
+-- upvalues: (copy) v_u_5, (copy) v_u_6, (copy) v_u_3
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Off" then
+if v_u_6.EnergyBlast_Cooldown.Value == false then
+return
+end
+if v_u_6.ActiveM1.Value == true then
+return
+end
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "EnergyBlast"
+})
+end
+end
+function Tackle()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.Tackle_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "Tackle"
+})
+end
+end
+function SwordSlam()
+-- upvalues: (copy) v_u_5, (copy) v_u_6, (copy) v_u_3
+if v_u_5 and (v_u_5:FindFirstChild("Humanoid") and v_u_5:FindFirstChild("Humanoid").FloorMaterial ~= Enum.Material.Air) then
+if v_u_6.SwordSlam_Cooldown.Value == false then
+return
+end
+if v_u_6.ActiveM1.Value == true then
+return
+end
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "SwordSlam"
+})
+end
+end
+function CatchOrb()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.CatchOrb_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "CatchOrb"
+})
+end
+end
+function JustFlash()
+-- upvalues: (copy) v_u_6, (copy) v_u_3
+if v_u_6.Flash_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_3.Flash:FireServer()
+end
+end
+function Absorb()
+-- upvalues: (copy) v_u_6, (ref) v_u_8, (copy) v_u_3
+if v_u_6.Absorb_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_8 = true
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "Absorb"
+})
+end
+end
+function OrbGenerate()
+-- upvalues: (copy) v_u_6, (ref) v_u_9, (copy) v_u_3
+if v_u_6.OrbGenerate_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_9 = true
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "OrbGenerate"
+})
+end
+end
+function FriendlyCharge()
+-- upvalues: (copy) v_u_6, (ref) v_u_9, (copy) v_u_3
+if v_u_6.FriendlyCharge_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_9 = true
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "FriendlyCharge"
+})
+end
+end
+function AbsorbHeal()
+-- upvalues: (copy) v_u_6, (ref) v_u_8, (copy) v_u_3
+if v_u_6.AbsorbHeal_Cooldown.Value == false then
+return
+elseif v_u_6.ActiveM1.Value ~= true then
+v_u_8 = true
+v_u_3.AstroLargeTVSet:FireServer({
+["Skill"] = "AbsorbHeal"
+})
+end
+end
+v_u_2.InputEnded:Connect(function(p10, p11)
+-- upvalues: (ref) v_u_7, (ref) v_u_8, (copy) v_u_5, (ref) v_u_9
+if not p11 then
+if p10.UserInputType == Enum.UserInputType.Keyboard then
+if p10.KeyCode == Enum.KeyCode.X then
+v_u_7 = false
+end
+if p10.KeyCode == Enum.KeyCode.F then
+v_u_8 = false
+end
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
+if p10.KeyCode == Enum.KeyCode.Z then
+v_u_9 = false
+return
+end
+elseif p10.KeyCode == Enum.KeyCode.Z then
+v_u_9 = false
+end
+end
+end
+end)
+v_u_2.InputBegan:Connect(function(p12, p13)
+-- upvalues: (copy) v_u_5, (copy) v_u_2
+if not p13 then
+if p12.UserInputType == Enum.UserInputType.Keyboard then
+if p12.KeyCode == Enum.KeyCode.R then
+SpinAttack()
+end
+if p12.KeyCode == Enum.KeyCode.E then
+SwordSlam()
+end
+if p12.KeyCode == Enum.KeyCode.F then
+Absorb()
+end
+if p12.KeyCode == Enum.KeyCode.G then
+ChangeMode()
+end
+if p12.KeyCode == Enum.KeyCode.Y then
+JustFlash()
+end
+if p12.KeyCode == Enum.KeyCode.H then
+Tackle()
+end
+if p12.KeyCode == Enum.KeyCode.V then
+CatchOrb()
+end
+if p12.KeyCode == Enum.KeyCode.U then
+SwordThrow()
+end
+if p12.KeyCode == Enum.KeyCode.Z then
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
+if v_u_5 and (v_u_5:FindFirstChild("Energy") and (v_u_5:FindFirstChild("Energy").Value <= 0 and (v_u_5:FindFirstChild("Orb") and v_u_5:FindFirstChild("Orb").Value == nil))) then
+OrbGenerate()
+else
+ThrowBack()
+end
+elseif v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Off" then
+if v_u_5 and (v_u_5:FindFirstChild("Energy") and (v_u_5:FindFirstChild("Energy").Value <= 0 and (v_u_5:FindFirstChild("Orb") and v_u_5:FindFirstChild("Orb").Value == nil))) then
+FriendlyCharge()
+else
+AbsorbHeal()
+end
+end
+end
+if p12.KeyCode == Enum.KeyCode.J then
+SpotLight()
+end
+if p12.KeyCode == Enum.KeyCode.X then
+local v14 = 0
+repeat
+task.wait()
+v14 = v14 + 1
+until not v_u_2:IsKeyDown(Enum.KeyCode.X) or v14 >= 30
+if v14 >= 30 then
+GroupTeleport()
+else
+Teleport()
+end
+end
+if p12.KeyCode == Enum.KeyCode.T then
+if v_u_5 and (v_u_5:FindFirstChild("Humanoid") and v_u_5:FindFirstChild("Humanoid").FloorMaterial == Enum.Material.Air) then
+GroundSlam()
+else
+JumpSlam()
+end
+end
+if p12.KeyCode == Enum.KeyCode.B then
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
+SwordCoating()
+return
+end
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Off" then
+EnergyBlast()
+end
+end
+end
+end
+end)
+if v_u_2.TouchEnabled then
+local v_u_15 = 0
+local v_u_16 = false
+v1:WaitForChild("PlayerGui")
+v1:WaitForChild("PlayerGui"):WaitForChild("MobileSupport")
+v1:WaitForChild("PlayerGui"):WaitForChild("MobileSupport"):WaitForChild("Main")
+if v1 and (v1:FindFirstChild("PlayerGui") and v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport")) then
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.RButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.GButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.TButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.XButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.YButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.BButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.EButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.FButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.VButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.ZButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.UButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.JButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.CButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.UpButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.DownButton.Visible = true
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.ZButton.MouseButton1Up:Connect(function()
+-- upvalues: (copy) v_u_5, (ref) v_u_8, (ref) v_u_9
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
+if v_u_5 and (v_u_5:FindFirstChild("Energy") and (v_u_5:FindFirstChild("Energy").Value <= 0 and (v_u_5:FindFirstChild("Orb") and v_u_5:FindFirstChild("Orb").Value == nil))) then
+if v_u_8 == false then
+OrbGenerate()
+else
+v_u_8 = false
+end
+else
+ThrowBack()
+return
+end
+elseif v_u_5 and (v_u_5:FindFirstChild("Energy") and (v_u_5:FindFirstChild("Energy").Value <= 0 and (v_u_5:FindFirstChild("Orb") and v_u_5:FindFirstChild("Orb").Value == nil))) then
+if v_u_9 == false then
+FriendlyCharge()
+else
+v_u_9 = false
+end
+else
+AbsorbHeal()
+return
+end
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.FButton.MouseButton1Up:Connect(function()
+-- upvalues: (ref) v_u_8
+if v_u_8 == false then
+Absorb()
+else
+v_u_8 = false
+end
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.UButton.MouseButton1Up:Connect(function()
+SwordThrow()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.VButton.MouseButton1Up:Connect(function()
+CatchOrb()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.JButton.MouseButton1Up:Connect(function()
+SpotLight()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.BButton.MouseButton1Up:Connect(function()
+-- upvalues: (copy) v_u_5
+if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
+SwordCoating()
+elseif v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Off" then
+EnergyBlast()
+end
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.YButton.MouseButton1Up:Connect(function()
+JustFlash()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.EButton.MouseButton1Up:Connect(function()
+SwordSlam()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.TButton.MouseButton1Up:Connect(function()
+-- upvalues: (copy) v_u_5
+if v_u_5 and (v_u_5:FindFirstChild("Humanoid") and v_u_5:FindFirstChild("Humanoid").FloorMaterial == Enum.Material.Air) then
+GroundSlam()
+else
+JumpSlam()
+end
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.CButton.MouseButton1Up:Connect(function()
+Tackle()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.GButton.MouseButton1Up:Connect(function()
+ChangeMode()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.RButton.MouseButton1Up:Connect(function()
+SpinAttack()
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.XButton.MouseButton1Down:Connect(function()
+-- upvalues: (ref) v_u_16, (ref) v_u_15, (ref) v_u_7
+v_u_16 = false
+repeat
+task.wait()
+v_u_15 = v_u_15 + 1
+until v_u_16 == true or v_u_15 >= 30
+v_u_16 = false
+if v_u_15 >= 30 then
+v_u_7 = true
+GroupTeleport()
+else
+Teleport()
+end
+v_u_15 = 0
+end)
+v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.XButton.MouseButton1Up:Connect(function()
+-- upvalues: (ref) v_u_16, (ref) v_u_7, (ref) v_u_15
+v_u_16 = true
+v_u_7 = false
+if v_u_15 < 10 then
+Teleport()
+end
+v_u_15 = 0
+end)
+end
+end
+local function v17()
+-- upvalues: (ref) v_u_7
+return v_u_7
+end
+local function v18()
+-- upvalues: (ref) v_u_8
+return v_u_8
+end
+local function v19()
+-- upvalues: (ref) v_u_9
+return v_u_9
+end
+game.ReplicatedStorage.HoldSkill3.OnClientInvoke = v19
+game.ReplicatedStorage.HoldSkill2.OnClientInvoke = v18
+game.ReplicatedStorage.HoldSkill.OnClientInvoke = v17
+end)

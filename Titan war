@@ -534,11 +534,8 @@ game.ReplicatedStorage.HoldSkill.OnClientInvoke = v17
 end)
 
 Section:NewButton("Change mode head cctv normal", "test", function()
-
-    workspace.Living.qoexjsz.ValuesFolder.Mode.Value = Normal
+workspace.Living.qoexjsz.ValuesFolder.Mode.Value = Normal
 end)
 Section:NewButton("bankai", "test", function()
-
-    workspace.Living.qoexjsz.ValuesFolder.Mode.Value = Bankai
-
+workspace.Living.qoexjsz.ValuesFolder.Mode.Value = Bankai
 end)

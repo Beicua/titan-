@@ -254,7 +254,7 @@ end
 end
 function Absorb()
 -- upvalues: (copy) v_u_6, (ref) v_u_8, (copy) v_u_3
-if v_u_6.Absorb_Cooldown.Value == false then
+if v_u_6.Absorb_Cooldown.Value == true then
 return
 elseif v_u_6.ActiveM1.Value ~= true then
 v_u_8 = true
@@ -417,7 +417,7 @@ v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.CButton.Visi
 v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.UpButton.Visible = true
 v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.DownButton.Visible = true
 v1:FindFirstChild("PlayerGui"):FindFirstChild("MobileSupport").Main.ZButton.MouseButton1Up:Connect(function()
--- upvalues: (copy) v_u_5, (ref) v_u_8, (ref) v_u_9
+-- upvalues: (copy) v_u_5, (ref) v_u_8, (ref) v_u_
 if v_u_5:FindFirstChild("ValuesFolder"):FindFirstChild("Mode").Value == "Open" then
 if v_u_5 and (v_u_5:FindFirstChild("Energy") and (v_u_5:FindFirstChild("Energy").Value <= 0 and (v_u_5:FindFirstChild("Orb") and v_u_5:FindFirstChild("Orb").Value == nil))) then
 if v_u_8 == false then
